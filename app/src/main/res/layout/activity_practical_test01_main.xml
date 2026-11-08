@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    CONTAINERUL PRINCIPAL
+    ───── A.2: CONTAINERUL PRINCIPAL ─────
     - LinearLayout vertical: copiii lui se așază unul sub altul
     - id-ul "main" TREBUIE păstrat: activitatea generată de template
       îl caută cu findViewById(R.id.main) pentru marginile de sistem (edge-to-edge)
@@ -15,7 +15,20 @@
     tools:context=".PracticalTest01MainActivity">
 
     <!--
-        RÂNDUL CU CELE DOUĂ JUMĂTĂȚI
+        ───── C.2: butonul care deschide activitatea secundară ─────
+        - primul în layout, ca să apară SUS, ca în imaginea din enunț
+        - layout_gravity="end": aliniat la dreapta
+    -->
+    <Button
+        android:id="@+id/navigate_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginBottom="32dp"
+        android:text="NAVIGATE TO SECONDARY ACTIVITY" />
+
+    <!--
+        ───── A.2: RÂNDUL CU CELE DOUĂ JUMĂTĂȚI ─────
         - orizontal: cele două coloane stau una lângă cealaltă („dispuse pe o linie”)
         - weightSum="2": spațiul se împarte în 2 părți egale
     -->
@@ -26,7 +39,7 @@
         android:weightSum="2">
 
         <!--
-            COLOANA STÂNGĂ (câmp text + buton dedesubt)
+            ───── A.2: COLOANA STÂNGĂ (câmp text + buton dedesubt) ─────
             - layout_width="0dp" + layout_weight="1" → ocupă exact 1/2 din lățime
               (0dp = „nu calcula lățimea după conținut, ia-o doar din weight”)
             - vertical: butonul ajunge DEDESUBTUL câmpului text
@@ -40,12 +53,13 @@
             android:orientation="vertical">
 
             <!--
-                CÂMPUL TEXT STÂNG
+                A.2: CÂMPUL TEXT STÂNG
                 - match_parent: umple toată lățimea coloanei (adică jumătate de ecran)
                 - text="0": valoarea inițială cerută
                 - gravity="center": cifra apare centrată în câmp
-                - enabled="false": câmpul e NEEDITABIL (utilizatorul nu poate scrie în el,
-                  doar codul îl modifică); apare gri, ca în imaginea din enunț
+                - enabled="false": câmpul e NEEDITABIL (doar codul îl modifică, B.1)
+                B.2 a:
+                - saveEnabled="false": fără salvare automată a textului
             -->
             <EditText
                 android:id="@+id/left_text"
@@ -53,10 +67,11 @@
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:gravity="center"
-                android:enabled="false" />
+                android:enabled="false"
+                android:saveEnabled="false" />
 
             <!--
-                BUTONUL STÂNG
+                A.2: BUTONUL STÂNG (click-ul e tratat în B.1)
                 - wrap_content: atât de lat cât îi trebuie textului
                 - layout_gravity="center_horizontal": butonul e CENTRAT
                   față de coloană, deci față de câmpul text de deasupra
@@ -70,7 +85,7 @@
                 android:text="PRESS ME!" />
         </LinearLayout>
 
-        <!-- COLOANA DREAPTĂ: identică, cu marginStart în loc de marginEnd -->
+        <!-- ───── A.2: COLOANA DREAPTĂ: identică, cu marginStart în loc de marginEnd ───── -->
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -78,16 +93,17 @@
             android:layout_marginStart="8dp"
             android:orientation="vertical">
 
-            <!-- CÂMPUL TEXT DREPT: aceleași proprietăți ca cel stâng -->
+            <!-- A.2: CÂMPUL TEXT DREPT: aceleași proprietăți ca cel stâng (inclusiv B.2 a) -->
             <EditText
                 android:id="@+id/right_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="0"
                 android:gravity="center"
-                android:enabled="false" />
+                android:enabled="false"
+                android:saveEnabled="false" />
 
-            <!-- BUTONUL DREPT: centrat sub câmpul text drept -->
+            <!-- A.2: BUTONUL DREPT: centrat sub câmpul text drept (click-ul în B.1) -->
             <Button
                 android:id="@+id/right_button"
                 android:layout_width="wrap_content"

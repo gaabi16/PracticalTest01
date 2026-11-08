@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ───── C.1: LAYOUT-UL ACTIVITĂȚII SECUNDARE ─────
+    - LinearLayout vertical: câmpul text sus, butoanele dedesubt
+    - id-ul "main" TREBUIE păstrat: template-ul îl folosește pentru edge-to-edge
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".PracticalTest01SecondaryActivity">
+
+    <!--
+        C.1: CÂMPUL TEXT CU TOTALUL DE APĂSĂRI
+        - valoarea vine prin intenție, din activitatea principală (C.2)
+        - text="0": valoare inițială, înlocuită din cod
+    -->
+    <TextView
+        android:id="@+id/total_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:gravity="center"
+        android:enabled="false" />
+
+    <!--
+        C.1: BUTOANELE OK ȘI CANCEL
+        - pe același rând (horizontal), împărțite prin weight
+        - fiecare întoarce alt rezultat activității principale
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <!-- C.1: OK → setResult(RESULT_OK) -->
+        <Button
+            android:id="@+id/ok_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="Ok" />
+
+        <!-- C.1: Cancel → setResult(RESULT_CANCELED) -->
+        <Button
+            android:id="@+id/cancel_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:text="Cancel" />
+
+    </LinearLayout>
+
+</LinearLayout>

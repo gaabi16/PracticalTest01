@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- generat de template: setările aplicației (iconiță, nume, temă) -->
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,16 +12,49 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PracticalTest01">
+
+        <!--
+            ───── A.1 c: activitatea principală ─────
+            - MAIN + LAUNCHER → activitatea de start, apare în meniul de aplicații
+            - exported="true" → obligatoriu pentru o activitate cu intent-filter
+            - adjustResize → ecranul se redimensionează când apare tastatura (generat)
+        -->
         <activity
             android:name=".PracticalTest01MainActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--
+            ───── C.1: activitatea secundară ─────
+            - fără intent-filter MAIN/LAUNCHER → nu apare în meniu,
+              poate fi pornită DOAR printr-o intenție (din C.2)
+            - exported="false" → doar aplicația noastră o poate porni
+        -->
+        <activity
+            android:name=".PracticalTest01SecondaryActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!--
+            ───── D.1: serviciul started ─────
+            - exported="false" → doar aplicația noastră îl poate porni (D.1 b)
+            - enabled="true" → sistemul îl poate instanția
+        -->
+        <service
+            android:name=".PracticalTest01Service"
+            android:enabled="true"
+            android:exported="false" />
+
+        <!--
+            D.2: receiverul NU se declară aici:
+            e înregistrat dinamic, din cod (onResume / onPause în activitatea principală)
+        -->
+
     </application>
 
 </manifest>
