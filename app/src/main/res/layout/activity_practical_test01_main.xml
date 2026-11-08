@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    CONTAINERUL PRINCIPAL
+    - LinearLayout vertical: copiii lui se așază unul sub altul
+    - id-ul "main" TREBUIE păstrat: activitatea generată de template
+      îl caută cu findViewById(R.id.main) pentru marginile de sistem (edge-to-edge)
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    tools:context=".PracticalTest01MainActivity">
+
+    <!--
+        RÂNDUL CU CELE DOUĂ JUMĂTĂȚI
+        - orizontal: cele două coloane stau una lângă cealaltă („dispuse pe o linie”)
+        - weightSum="2": spațiul se împarte în 2 părți egale
+    -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <!--
+            COLOANA STÂNGĂ (câmp text + buton dedesubt)
+            - layout_width="0dp" + layout_weight="1" → ocupă exact 1/2 din lățime
+              (0dp = „nu calcula lățimea după conținut, ia-o doar din weight”)
+            - vertical: butonul ajunge DEDESUBTUL câmpului text
+            - marginEnd: puțin spațiu între cele două jumătăți
+        -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical">
+
+            <!--
+                CÂMPUL TEXT STÂNG
+                - match_parent: umple toată lățimea coloanei (adică jumătate de ecran)
+                - text="0": valoarea inițială cerută
+                - gravity="center": cifra apare centrată în câmp
+                - enabled="false": câmpul e NEEDITABIL (utilizatorul nu poate scrie în el,
+                  doar codul îl modifică); apare gri, ca în imaginea din enunț
+            -->
+            <EditText
+                android:id="@+id/left_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:enabled="false" />
+
+            <!--
+                BUTONUL STÂNG
+                - wrap_content: atât de lat cât îi trebuie textului
+                - layout_gravity="center_horizontal": butonul e CENTRAT
+                  față de coloană, deci față de câmpul text de deasupra
+            -->
+            <Button
+                android:id="@+id/left_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="PRESS ME!" />
+        </LinearLayout>
+
+        <!-- COLOANA DREAPTĂ: identică, cu marginStart în loc de marginEnd -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical">
+
+            <!-- CÂMPUL TEXT DREPT: aceleași proprietăți ca cel stâng -->
+            <EditText
+                android:id="@+id/right_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:gravity="center"
+                android:enabled="false" />
+
+            <!-- BUTONUL DREPT: centrat sub câmpul text drept -->
+            <Button
+                android:id="@+id/right_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp"
+                android:text="PRESS ME, TOO!" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>
